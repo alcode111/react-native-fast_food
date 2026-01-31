@@ -1,5 +1,6 @@
 import CustomButton from '@/components/CustomButton'
 import CustomInput from '@/components/CustomInput'
+import { supabase } from '@/lib/supabase'
 import { Link, router } from 'expo-router'
 import React, { useState } from 'react'
 import { Alert, Text, View } from 'react-native'
@@ -15,6 +16,12 @@ const SignIn = () => {
 
         try {
             // Call Supabase Sign In Function
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: form.email,
+                password: form.password,
+            })
+
+            if (error) return Alert.alert("Error", error.message)
 
             Alert.alert("Success", "User signed in successfully.")
             router.replace("/")
@@ -37,7 +44,7 @@ const SignIn = () => {
             <CustomInput
                 placeholder="Enter your password"
                 value={form.password}
-                onChangeText={(text: string) => setForm((prev) => ({...prev, password: text }))}
+                onChangeText={(text: string) => setForm((prev) => ({ ...prev, password: text }))}
                 label="Password"
                 secureTextEntry={true}
             />

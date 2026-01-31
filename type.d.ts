@@ -1,33 +1,29 @@
-import { Models } from "react-native-appwrite";
 
-export interface MenuItem extends Models.Document {
-    name: string;
-    price: number;
-    image_url: string;
-    description: string;
-    calories: number;
-    protein: number;
-    rating: number;
-    type: string;
+export interface Menu {
+  id: string
+  name: string
+  description: string
+  image_url: string
+  rating: number
+  calories: number
+  proteins: number
+  price: number
+  category_id: string
+  created_at: string
 }
 
-export interface Category extends Models.Document {
-    name: string;
-    description: string;
+export interface Category {
+  id: string
+  name: string
+  description: string
+  created_at: string
 }
 
 export interface Profile {
-    id: string
-    name: string
-    avatar: string | null
-    created_at: string
-}
-
-export interface CartCustomization {
-    id: string;
-    name: string;
-    price: number;
-    type: string;
+  id: string
+  name: string
+  avatar: string | null
+  created_at: string
 }
 
 export interface CartItemType {
@@ -50,20 +46,20 @@ export interface CartStore {
     getTotalPrice: () => number;
 }
 
-interface TabBarIconProps {
+export interface TabBarIconProps {
     focused: boolean;
     icon: ImageSourcePropType;
     title: string;
 }
 
-interface PaymentInfoStripeProps {
+export interface PaymentInfoStripeProps {
     label: string;
     value: string;
     labelStyle?: string;
     valueStyle?: string;
 }
 
-interface CustomButtonProps {
+export interface CustomButtonProps {
     onPress?: () => void;
     title?: string;
     style?: string;
@@ -72,11 +68,11 @@ interface CustomButtonProps {
     isLoading?: boolean;
 }
 
-interface CustomHeaderProps {
+export interface CustomHeaderProps {
     title?: string;
 }
 
-interface CustomInputProps {
+export interface CustomInputProps {
     placeholder?: string;
     value?: string;
     onChangeText?: (text: string) => void;
@@ -85,24 +81,24 @@ interface CustomInputProps {
     keyboardType?: "default" | "email-address" | "numeric" | "phone-pad";
 }
 
-interface ProfileFieldProps {
+export interface ProfileFieldProps {
     label: string;
     value: string;
     icon: ImageSourcePropType;
 }
 
-interface CreateUserParams {
+export interface CreateUserParams {
     email: string;
     password: string;
     name: string;
 }
 
-interface SignInParams {
+export interface SignInParams {
     email: string;
     password: string;
 }
 
-interface GetMenuParams {
+export interface GetMenuParams {
     category: string;
     query: string;
 }
